@@ -1,12 +1,15 @@
+// mm-ui/src/components/AddressForm.jsx
+
 import React, { useState } from 'react';
-import { getCepInfo } from '../services/cepService';
+import { fetchAddressByCep } from '../services/cepService.js';
 
 const AddressForm = ({ address, setAddress }) => {
     const [cep, setCep] = useState('');
 
     const handleCepSearch = async () => {
         try {
-            const addressInfo = await getCepInfo(cep);
+            console.log("aqui")
+            const addressInfo = await fetchAddressByCep(cep);
             setAddress({ ...address, ...addressInfo });
         } catch (error) {
             alert('CEP não encontrado!');

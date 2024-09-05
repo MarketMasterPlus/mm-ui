@@ -1,6 +1,8 @@
+// mm-ui/src/components/CustomerRegistration.jsx
+
 import React, { useState } from 'react';
-import AddressForm from './AddressForm';
-import { registerCustomer } from '../services/customerService';
+import AddressForm from './AddressForm.jsx';
+import { registerCustomer } from '../services/customerService.js';
 
 const CustomerRegistration = () => {
     const [customer, setCustomer] = useState({
@@ -21,12 +23,17 @@ const CustomerRegistration = () => {
 
     const handleRegister = async () => {
         try {
-            await registerCustomer({ ...customer, ...address });
+            // Destructure id out of the customer and address objects and only send the rest
+            const { id: customerId, ...customerData } = customer;
+            const { id: addressId, ...addressData } = address;
+
+            await registerCustomer({ ...customerData, ...addressData });
             alert('Cliente registrado com sucesso!');
         } catch (error) {
-            alert('Erro ao registrar cliente.');
+            alert('Erro ao registrar cliente: ' + error.message);
         }
     };
+
 
     return (
         <div className="customer-registration">

@@ -1,5 +1,8 @@
+// src/services/cepService.js
+
 export const fetchAddressByCep = async (cep) => {
-    const response = await fetch(`${import.meta.env.VITE_REACT_APP_MM_ADDRESS_API_URL}/viacep/${cep}`, {
+    console.log(`${import.meta.env.VITE_MM_ADDRESS_API_URL}/viacep/${cep}`);
+    const response = await fetch(`${import.meta.env.VITE_MM_ADDRESS_API_URL}/viacep/${cep}`, {
         method: 'GET',
     });
 

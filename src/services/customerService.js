@@ -1,7 +1,7 @@
 // src/services/customerService.js
 
 export const registerCustomer = async (customerData) => {
-    const response = await fetch(`${import.meta.env.VITE_REACT_APP_MM_CUSTOMER_API_URL}/register`, {
+    const response = await fetch(`${import.meta.env.VITE_MM_CUSTOMER_API_URL}/register`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -17,12 +17,12 @@ export const registerCustomer = async (customerData) => {
 };
 
 export const loginCustomer = async ({ emailOrCpf, password }) => {
-    const response = await fetch(`${import.meta.env.VITE_REACT_APP_MM_CUSTOMER_API_URL}/login`, {
+    const response = await fetch(`${import.meta.env.VITE_MM_CUSTOMER_API_URL}/login`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ emailOrCpf, password }),
+        body: JSON.stringify({ identifier: emailOrCpf, password }),
     });
 
     if (!response.ok) {
