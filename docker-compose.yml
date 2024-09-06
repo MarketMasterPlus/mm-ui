@@ -1,18 +1,21 @@
-# docker-compose.yml
-
-version: '3.8'
+version: '3.9'
 
 services:
   mm-ui:
     build:
       context: .
       dockerfile: Dockerfile
+    container_name: mm-ui
     ports:
-      - "3000:3000"
+      - "5702:5702"
     env_file:
       - .env   # Reference the .env file to load environment variables
-    volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
     stdin_open: true
     tty: true
+    networks:
+      - marketmaster-network
+
+networks:
+  marketmaster-network:
+    name: marketmaster-network
+    external: true

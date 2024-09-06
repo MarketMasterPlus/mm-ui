@@ -58,12 +58,19 @@ button:hover {
 }
 
 .form-group input {
-  width: 100%;
+  width: 100%;  /* Ensures that the input spans the full width */
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  box-sizing: border-box;  /* Ensures the border and padding are included in the element's total width and height */
 }
 
 button {
   margin-top: 20px;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;  // Adjust the gap size as needed
+  margin-top: 10px;  // Adds some space above the button row
 }

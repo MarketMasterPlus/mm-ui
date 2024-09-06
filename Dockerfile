@@ -1,28 +1,28 @@
-# Dockerfile
+# Use the official Node.js 20 image
+FROM node:20
 
-# Step 1: Use the official Node.js image as the base
-FROM node:18-alpine
-
-# Step 2: Set the working directory inside the container
+# Set the working directory inside the container
 WORKDIR /usr/src/app
 
-# Step 3: Copy package.json and package-lock.json to the working directory
+# Copy package.json and package-lock.json (or yarn.lock) to the working directory
 COPY package*.json ./
 
-# Step 4: Install dependencies
-RUN npm install
+# Install build tools and then dependencies
+# This ensures any native modules are compiled correctly
+RUN apt-get update && apt-get install -y build-essential \
+    && npm install
 
-# Step 5: Copy the rest of the application code
+# Copy the rest of the application code
 COPY . .
 
-# Step 6: Build the React app for production
+# Build the React app for production
 RUN npm run build
 
-# Step 7: Install a simple HTTP server to serve the React app
+# Install a simple HTTP server to serve the React app
 RUN npm install -g serve
 
-# Step 8: Expose the port the app will run on
-EXPOSE 3000
+# Expose the port the app will run on
+EXPOSE 5702
 
-# Step 9: Command to serve the app
-CMD ["serve", "-s", "dist", "-l", "3000"]
+# Command to serve the app using serve
+CMD ["serve", "-s", "dist", "-l", "5702"]

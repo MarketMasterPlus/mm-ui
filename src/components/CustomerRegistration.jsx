@@ -6,7 +6,7 @@ import { registerCustomer } from '../services/customerService.js';
 
 const CustomerRegistration = () => {
     const [customer, setCustomer] = useState({
-        full_name: '',
+        fullname: '',
         cpf: '',
         email: '',
         password: '',
@@ -19,13 +19,14 @@ const CustomerRegistration = () => {
         neighborhood: '',
         city: '',
         state: '',
+        complement: ''
     });
 
     const handleRegister = async () => {
         try {
             // Destructure id out of the customer and address objects and only send the rest
             const { id: customerId, ...customerData } = customer;
-            const { id: addressId, ...addressData } = address;
+            const { id: addressid, ...addressData } = address;
 
             await registerCustomer({ ...customerData, ...addressData });
             alert('Cliente registrado com sucesso!');
@@ -42,8 +43,8 @@ const CustomerRegistration = () => {
                 <label>Nome Completo</label>
                 <input
                     type="text"
-                    value={customer.full_name}
-                    onChange={(e) => setCustomer({ ...customer, full_name: e.target.value })}
+                    value={customer.fullname}
+                    onChange={(e) => setCustomer({ ...customer, fullname: e.target.value })}
                 />
             </div>
             <div className="form-group">

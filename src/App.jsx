@@ -3,19 +3,21 @@ import React, { useState } from 'react';
 import Header from './components/Header.jsx';
 import CustomerRegistration from './components/CustomerRegistration.jsx';
 import Login from './components/Login.jsx';
-import { AuthProvider } from './context/AuthContext.jsx'; // Import AuthProvider
+import CustomerProfile from './components/CustomerProfile.jsx'; // Make sure this is imported
+import { AuthProvider } from './context/AuthContext.jsx';
 import './App.css';
 
 function App() {
     const [view, setView] = useState(null);
 
     return (
-        <AuthProvider> {/* Wrap everything inside AuthProvider */}
+        <AuthProvider>
             <div className="App">
                 <Header setView={setView} />
 
-                {view === 'login' && <Login />}
+                {view === 'login' && <Login setView={setView} />}
                 {view === 'register' && <CustomerRegistration />}
+                {view === 'profile' && <CustomerProfile setView={setView} />}
 
                 {view === null && (
                     <div className="home-content">
