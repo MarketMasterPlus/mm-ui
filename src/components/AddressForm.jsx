@@ -1,6 +1,7 @@
 // mm-ui/src/components/AddressForm.jsx
 import React, { useState, useEffect } from 'react';
-import { fetchAddressByCep } from '../services/cepService.js';
+import PropTypes from 'prop-types';
+import { fetchAddressByCep } from '../services/addressService.js';
 
 // Helper function to format the CEP as NN.NNN-NNN
 const formatCep = (value) => {
@@ -101,6 +102,19 @@ const AddressForm = ({ address, setAddress }) => {
             </div>
         </div>
     );
+};
+
+AddressForm.propTypes = {
+    address: PropTypes.shape({
+        cep: PropTypes.string,
+        street: PropTypes.string,
+        number: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+        neighborhood: PropTypes.string,
+        city: PropTypes.string,
+        state: PropTypes.string,
+        id: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    }).isRequired,
+    setAddress: PropTypes.func.isRequired
 };
 
 export default AddressForm;

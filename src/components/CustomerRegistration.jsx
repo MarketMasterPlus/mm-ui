@@ -1,8 +1,9 @@
-// mm-ui/src/components/CustomerRegistration.jsx
+// src/components/CustomerRegistration.jsx
 
 import React, { useState } from 'react';
 import AddressForm from './AddressForm.jsx';
 import { registerCustomer } from '../services/customerService.js';
+import { createOrUpdateAddress, deleteAddress } from '../services/addressService.js';
 
 const CustomerRegistration = () => {
     const [customer, setCustomer] = useState({
@@ -23,19 +24,38 @@ const CustomerRegistration = () => {
     });
 
     const handleRegister = async () => {
+        let addressId = null;
         try {
-            // Destructure id out of the customer and address objects and only send the rest
-            const { id: customerId, ...customerData } = customer;
-            const { id: addressid, ...addressData } = address;
+            // First, attempt to create or update the address
+            const addressResponse = await createOrUpdateAddress({
+                cep: address.cep.replace(/\D/g, ''), // Ensuring only digits for cep
+                street: address.street,
+                number: address.number,
+                neighborhood: address.neighborhood,
+                city: address.city,
+                state: address.state,
+                complement: address.complement
+            });
+    
+            addressId = addressResponse.id.toString(); // Ensuring we get the address ID from the response
 
-            await registerCustomer({ ...customerData, ...addressData });
+            // Now, prepare the customer data with the obtained addressId
+            const customerData = {
+                ...customer,
+                addressid: addressId
+            };
+    
+            await registerCustomer(customerData);
+    
             alert('Cliente registrado com sucesso!');
         } catch (error) {
             alert('Erro ao registrar cliente: ' + error.message);
+            if (addressId) {
+                await deleteAddress(addressId); // Rollback the address creation/update if addressId was set
+            }
         }
     };
-
-
+    
     return (
         <div className="customer-registration">
             <h2>Cadastro de Cliente</h2>
@@ -71,7 +91,6 @@ const CustomerRegistration = () => {
                     onChange={(e) => setCustomer({ ...customer, password: e.target.value })}
                 />
             </div>
-
             <AddressForm address={address} setAddress={setAddress} />
 
             <button onClick={handleRegister}>Registrar Cliente</button>

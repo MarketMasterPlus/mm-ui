@@ -1,5 +1,4 @@
-version: '3.9'
-
+# mm-ui/docker-compose.yml
 services:
   mm-ui:
     build:

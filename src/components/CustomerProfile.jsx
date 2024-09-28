@@ -1,7 +1,8 @@
 // CustomerProfile.jsx (with password visibility toggle)
 import React, {useState, useEffect} from 'react';
 import {useAuth} from '../context/AuthContext';
-import {fetchCustomerDetails, fetchAddressById, updateCustomer, updateAddress} from '../services/customerService';
+import {fetchCustomerDetails, updateCustomer} from '../services/customerService';
+import {fetchAddressById, updateAddress} from '../services/addressService.js';
 import AddressForm from './AddressForm.jsx';
 import './Password.css'; // Assuming you are using this for styling
 

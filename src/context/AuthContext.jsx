@@ -1,3 +1,5 @@
+// mm-ui/src/AuthContext.jsx
+
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import Cookies from 'js-cookie';
 
