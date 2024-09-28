@@ -1,5 +1,6 @@
 // CustomerProfile.jsx (with password visibility toggle)
 import React, {useState, useEffect} from 'react';
+import PropTypes from 'prop-types';
 import {useAuth} from '../context/AuthContext';
 import {fetchCustomerDetails, updateCustomer} from '../services/customerService';
 import {fetchAddressById, updateAddress} from '../services/addressService.js';
@@ -78,7 +79,6 @@ const CustomerProfile = ({setView}) => {
             newPassword ?
                 updatedCustomer.password = newPassword
                 : delete updatedCustomer.password;
-            console.log(updatedCustomer)
 
             await updateCustomer(user.cpf, updatedCustomer);
             await updateAddress(address.id, address);
@@ -152,6 +152,9 @@ const CustomerProfile = ({setView}) => {
             </div>
         </div>
     );
+};
+CustomerProfile.propTypes = {
+    setView: PropTypes.func.isRequired,
 };
 
 export default CustomerProfile;
