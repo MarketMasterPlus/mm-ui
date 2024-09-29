@@ -58,7 +58,7 @@ const AddressForm = ({ address, setAddress }) => {
                     value={cep}
                     onChange={handleCepChange} // Format the CEP as the user types
                 />
-                <button onClick={handleCepSearch}>Buscar CEP</button>
+                <button type="button" onClick={handleCepSearch}>Buscar CEP</button>
             </div>
             <div className="form-group">
                 <label>Rua</label>

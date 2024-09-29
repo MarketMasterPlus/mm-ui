@@ -5,7 +5,7 @@ import {useAuth} from '../context/AuthContext';
 import {fetchCustomerDetails, updateCustomer} from '../services/customerService';
 import {fetchAddressById, updateAddress} from '../services/addressService.js';
 import AddressForm from './AddressForm.jsx';
-import './Password.css'; // Assuming you are using this for styling
+import '../css/Password.css'; // Assuming you are using this for styling
 
 const CustomerProfile = ({setView}) => {
     const {user} = useAuth();

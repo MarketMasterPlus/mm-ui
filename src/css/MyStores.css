@@ -1,0 +1,42 @@
+.my-stores {
+    padding: 20px;
+}
+
+.my-stores h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.my-stores .store-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.my-stores .store-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+}
+
+.my-stores .store-card img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.my-stores .store-actions {
+    margin-top: 10px;
+}
+
+.my-stores .store-actions button {
+    margin: 5px;
+    padding: 8px 12px;
+}
+
+.my-stores .error {
+    color: red;
+    text-align: center;
+}

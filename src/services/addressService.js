@@ -64,14 +64,14 @@ export const updateAddress = async (id, addressData) => {
 };
 
 export const deleteAddress = async (id) => {
-    console.log('calling delete address')
     const response = await fetch(`${import.meta.env.VITE_MM_ADDRESS_API_URL}/mm-address/${id}`, {
         method: 'DELETE',
     });
 
     if (!response.ok) {
-        const errorData = await response.json(); 
-        throw new Error(errorData.message);
+        // We're assuming the response might still have a JSON body on error
+        const errorData = await response.text().then(text => text ? JSON.parse(text) : {});
+        throw new Error(errorData.message || 'Failed to delete address');
     }
-    return response.json();
+    return true;
 }

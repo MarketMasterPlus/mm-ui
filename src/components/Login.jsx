@@ -1,9 +1,10 @@
 // mm-ui/src/components/Login.jsx
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Cookies from 'js-cookie';
 import { useAuth } from '../context/AuthContext.jsx'; // Ensure this path matches where AuthContext is located
 import { loginCustomer } from '../services/customerService.js';
-import './Password.css'; // Add a new CSS file for styling the input and icon
+import '../css/Password.css'; // Add a new CSS file for styling the input and icon
 
 const Login = ({setView}) => {
     const [emailOrCpf, setEmailOrCpf] = useState('');
@@ -72,6 +73,9 @@ const Login = ({setView}) => {
             <button onClick={handleLogin}>Entrar</button>
         </div>
     );
+};
+Login.propTypes = {
+    setView: PropTypes.func.isRequired,
 };
 
 export default Login;

@@ -1,0 +1,55 @@
+/* src/css/Header.css */
+.header {
+    display: flex;
+    flex-direction: column; /* Keeps top-row and bottom-row stacked */
+    background-color: #dc3545; /* Bootstrap's danger color */
+    padding: 10px 20px;
+    color: white;
+}
+
+.header .top-row, .header .bottom-right {
+    display: flex;
+    align-items: center; /* Aligns items vertically center */
+    justify-content: space-between; /* Space between logo and right content */
+    width: 100%; /* Ensures full width of the header */
+}
+
+.header .logo h1 {
+    margin: 0;
+    font-size: 36px; /* Adjust size as needed */
+}
+
+.header .top-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.header .welcome-message {
+    margin-bottom: -5px; /* Reduced gap for compactness */
+    font-size: 16px;
+    color: white;
+}
+
+.header .welcome-guest {
+    margin-bottom: -5px; /* Reduced gap for compactness */
+    font-size: 16px;
+    color: #dc3545;
+}
+
+.header nav {
+    display: flex;
+    gap: 10px; /* Consistent spacing between buttons */
+}
+
+.header nav button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.header nav button:hover {
+    text-decoration: underline;
+}

@@ -1,9 +1,0 @@
-.header .welcome-message {
-    font-size: 20px; /* Larger font size for visibility */
-    color: white; /* White color for contrast against a red background */
-    font-family: 'Arial', sans-serif; /* Modern, readable font */
-    margin-left: auto; /* Pushes the message to the right */
-    padding-right: 20px; /* Right padding for some spacing from the edge */
-    display: flex;
-    align-items: center; /* Vertically center aligns the text */
-}

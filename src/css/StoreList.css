@@ -1,0 +1,44 @@
+.store-list {
+    padding: 20px;
+}
+
+.store-list h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.store-list .search-bar {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.store-list .search-bar input {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.store-list .store-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.store-list .store-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+}
+
+.store-list .store-card img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.store-list .error {
+    color: red;
+    text-align: center;
+}

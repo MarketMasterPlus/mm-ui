@@ -5,6 +5,7 @@ import CustomerRegistration from './components/CustomerRegistration.jsx';
 import Login from './components/Login.jsx';
 import CustomerProfile from './components/CustomerProfile.jsx'; // Make sure this is imported
 import { AuthProvider } from './context/AuthContext.jsx';
+import MarketPanel from './components/MarketPanel.jsx'; // Make sure this import is correct
 import './App.css';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
                 {view === 'login' && <Login setView={setView} />}
                 {view === 'register' && <CustomerRegistration />}
                 {view === 'profile' && <CustomerProfile setView={setView} />}
+                {view === 'market' && <MarketPanel setView={setView} />} 
 
                 {view === null && (
                     <div className="home-content">
