@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '../css/StoreCard.css';
 
-const StoreCard = ({ store, onEdit, onDelete }) => {
+const StoreCard = ({ store, onEdit, onDelete, onProducts }) => {
     return (
         <div className="store-card">
             <h3>{store.name}</h3>
@@ -17,6 +17,7 @@ const StoreCard = ({ store, onEdit, onDelete }) => {
                 <div className="store-actions">
                     {onEdit && <button onClick={() => onEdit(store.id)}>Editar</button>}
                     {onDelete && <button onClick={() => onDelete(store.id)}>Deletar</button>}
+                    <button onClick={() => onProducts(store.id)}>Produtos</button>
                 </div>
             )}
         </div>
@@ -32,6 +33,7 @@ StoreCard.propTypes = {
     }).isRequired,
     onEdit: PropTypes.func,
     onDelete: PropTypes.func,
+    onProducts: PropTypes.func.isRequired,
 };
 
 export default StoreCard;
