@@ -1,8 +1,8 @@
-// src/components/ProductList.jsx
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { fetchInventoryByStore } from '../services/inventoryService';
 import ProductCard from './ProductCard';
+import { fetchInventoryByStore } from '../services/inventoryService';
+import '../css/ProductList.css';
 
 const ProductList = ({ storeId }) => {
     const [products, setProducts] = useState([]);
@@ -24,8 +24,9 @@ const ProductList = ({ storeId }) => {
         </div>
     );
 };
+
 ProductList.propTypes = {
-    storeId: PropTypes.string.isRequired,
+    storeId: PropTypes.string.isRequired
 };
 
 export default ProductList;

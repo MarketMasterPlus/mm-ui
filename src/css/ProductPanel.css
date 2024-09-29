@@ -1,0 +1,36 @@
+.product-panel {
+    display: flex;
+    min-height: 100vh;
+}
+
+.product-panel .sidebar {
+    width: 200px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+}
+
+.product-panel .sidebar button {
+    margin-bottom: 10px;
+    width: 100%;
+    padding: 10px;
+    text-align: left;
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.product-panel .sidebar button:hover {
+    background-color: #ddd;
+}
+
+.product-panel .content {
+    flex-grow: 1;
+    padding: 20px;
+}

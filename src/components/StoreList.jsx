@@ -1,10 +1,12 @@
 // src/components/StoreList.jsx
+
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { fetchStores, fetchStoresByCity } from '../services/storeService.js';
 import StoreCard from './StoreCard.jsx';
 import '../css/StoreList.css';
 
-const StoreList = () => {
+const StoreList = ({ user }) => {
     const [stores, setStores] = useState([]);
     const [filters, setFilters] = useState({
         name: '',
@@ -83,11 +85,19 @@ const StoreList = () => {
                     <StoreCard
                         key={store.id}
                         store={store}
+                        onEdit={null}  // Edit and delete functions should be passed only if the user is the owner
+                        onDelete={null}
+                        onProducts={() => console.log('Opening products for', store.name)}
+                        user={user}
                     />
                 ))}
             </div>
         </div>
     );
+};
+
+StoreList.propTypes = {
+    user: PropTypes.object.isRequired
 };
 
 export default StoreList;

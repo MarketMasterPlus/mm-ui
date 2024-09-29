@@ -1,8 +1,8 @@
-// src/components/ProductPanel.jsx
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import ProductList from './ProductList';
 import ProductRegistration from './ProductRegistration';
+import '../css/ProductPanel.css';
 
 const ProductPanel = ({ storeId }) => {
     const [view, setView] = useState('list'); // 'list' or 'register'
@@ -21,7 +21,7 @@ const ProductPanel = ({ storeId }) => {
 };
 
 ProductPanel.propTypes = {
-    storeId: PropTypes.string.isRequired,
+    storeId: PropTypes.string.isRequired
 };
 
 export default ProductPanel;
