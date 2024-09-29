@@ -154,14 +154,16 @@ After launching the services, you can navigate to the UI through your browser at
 2. **Create and configure the `.env` file**:
     - In the root directory of the project, create a file named `.env`.
     - Add the necessary environment variables to the `.env` file. Below is an example configuration:
-```env
-VITE_MM_CUSTOMER_API_URL=http://localhost:5701
-VITE_MM_ADDRESS_API_URL=http://localhost:5700
-VITE_MM_STORE_API_URL=http://localhost:5703
-VITE_MM_PRODUCT_API_URL=http://localhost:5704
-VITE_MM_INVENTORY_API_URL=http://localhost:5705
-```
+    ```env
+    VITE_MM_CUSTOMER_API_URL=http://localhost:5701
+    VITE_MM_ADDRESS_API_URL=http://localhost:5700
+    VITE_MM_STORE_API_URL=http://localhost:5703
+    VITE_MM_PRODUCT_API_URL=http://localhost:5704
+    VITE_MM_INVENTORY_API_URL=http://localhost:5705
+    ```
+    
     - You can rename the .env.example file to .env and update the values as needed.
+
     ```sh
     cp .env.example .env
     ```
