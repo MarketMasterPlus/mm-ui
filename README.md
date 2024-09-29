@@ -6,6 +6,18 @@ Disciplina: Desenvolvimento Back-end Avançado
 Aluno: Rodrigo Alves Costa
 ```
 
+## Table of Contents
+
+- [Related Market Master Microservices](#related-market-master-microservices)
+- [Market Master: Architecture Diagram](#market-master-architecture-diagram)
+- [Live Demo](#live-demo)
+- [Quick Start](#quick-start)
+  - [Prerequisites](#prerequisites)
+  - [Installation and Configuration](#installation-and-configuration)
+- [Functionality Overview](#functionality-overview)
+- [How to Use](#how-to-use)
+- [Contributing](#contributing)
+
 ## Market Master: UI
 The `mm-ui` service is part of the Market Master project, a suite of microservices designed to manage various aspects of a supermarket e-commerce platform. This service handles the product front-end and its various connections to the microservices and their respective interactions.
 
@@ -27,7 +39,7 @@ This diagram illustrates the relationship between the front-end and the various 
 ## Live Demo
 You can see a 5-minute live demo of this project here:
     [![Market Master Demo](https://img.youtube.com/vi/1Q1Q1Q1Q1Q1Q/0.jpg)](https://www.youtube.com/watch?v=1Q1Q1Q1Q1Q1Q)
-    
+
 ## Quick Start
 
 This section provides instructions for quickly setting up the `mm-ui` using Docker Compose.
