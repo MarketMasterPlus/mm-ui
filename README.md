@@ -31,10 +31,31 @@ The `mm-ui` service is part of the Market Master project, a suite of microservic
 - [mm-ui](https://github.com/MarketMasterPlus/mm-ui) — User Interface for Market Master
 
 ## Market Master: Architecture Diagram
+This diagram illustrates the relationship between the front-end and the various backend services of the Market Master project.
 
 ![Market Master Architecture](./docs/architecture.png)
 
-This diagram illustrates the relationship between the front-end and the various backend services of the Market Master project.
+### ViaCEP Integration
+The `mm-address` service integrates with the [ViaCEP API](https://viacep.com.br/) to fetch address details based on postal codes. The service provides a single endpoint to fetch address details by postal code.
+
+In the mm-address service code, the ViaCEP integration is implemented with an endpoint that will fetch address details based on the postal code provided. 
+
+The endpoint will validate the postal code format and fetch the address details from the ViaCEP API. The response will include the street, city, state, neighborhood, and complement of the address.
+
+``sh
+curl http://localhost:5000/mm-address/viacep/01001000
+``
+
+```json
+{
+    "street": "Rua dos Bobos",
+    "city": "Rio de Janeiro",
+    "state": "RJ",
+    "cep": "22290-080",
+    "neighborhood": "Copacabana",
+    "complement": "de 201 a 233 - lado ímpar"
+}
+```
 
 ## Live Demo
 You can see a 5-minute live demo of this project here:
