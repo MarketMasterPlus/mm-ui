@@ -61,7 +61,52 @@ curl http://localhost:5000/mm-address/viacep/01001000
 You can see a 5-minute live demo of this project here:
     [![Market Master Demo](https://img.youtube.com/vi/1Q1Q1Q1Q1Q1Q/0.jpg)](https://www.youtube.com/watch?v=1Q1Q1Q1Q1Q1Q)
 
-## Quick Start
+## Quick Start for the entire Market Master project
+
+This section provides instructions for quickly setting up the entire Market Master project using Docker Compose.
+
+Create a superdirectory to hold all the Market Master services:
+
+```sh
+mkdir market-master
+cd market-master
+```
+
+Create a bash script to start all services in detached mode:
+```sh
+#!/bin/bash
+
+declare -a directories=("mm-address" "mm-customer" "mm-inventory" "mm-product" "mm-shopping-cart" "mm-store" "mm-ui")
+
+for dir in "${directories[@]}"
+do
+  echo "Starting containers in $dir in detached mode..."
+  cd "$dir"
+  docker compose up -d "$@"
+  cd ..
+done
+```
+
+Run the script to start all services:
+```sh
+chmod +x start-all.sh
+./start-all.sh
+```
+
+You can also create a stop script to stop all services:
+```sh
+#!/bin/bash
+
+declare -a containers=("mm-address" "mm-address-db" "mm-customer" "mm-customer-db" "mm-inventory" "mm-inventory-db" "mm-product" "mm-product-db" "mm-shopping-cart" "mm-shopping-cart-db" "mm-store" "mm-store-db" "mm-ui")
+
+for container in "${containers[@]}"
+do
+  echo "Stopping $container..."
+  docker stop "$container"
+done
+```
+
+## Quick Start for mm-ui
 
 This section provides instructions for quickly setting up the `mm-ui` using Docker Compose.
 

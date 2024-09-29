@@ -1,5 +1,6 @@
 // src/components/ProductPanel.jsx
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import ProductList from './ProductList';
 import ProductRegistration from './ProductRegistration';
 
@@ -17,6 +18,10 @@ const ProductPanel = ({ storeId }) => {
             </main>
         </div>
     );
+};
+
+ProductPanel.propTypes = {
+    storeId: PropTypes.string.isRequired,
 };
 
 export default ProductPanel;
