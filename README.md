@@ -32,7 +32,7 @@ The `mm-ui` service is part of the Market Master project, a suite of microservic
 
 ## Live Demo
 You can see a 5-minute live demo of this project here:
-    [![Market Master Demo](https://www.loom.com/share/30d1121f90804e4ababea3a6590145c9?sid=a188dd24-435b-4d8c-8335-e029fa5da501)
+    [Market Master Demo](https://www.loom.com/share/30d1121f90804e4ababea3a6590145c9?sid=a188dd24-435b-4d8c-8335-e029fa5da501)
 
 ## Market Master: Architecture Diagram
 This diagram illustrates the relationship between the front-end and the various backend services of the Market Master project.
