@@ -30,6 +30,10 @@ The `mm-ui` service is part of the Market Master project, a suite of microservic
 - [mm-pact-broker](https://github.com/MarketMasterPlus/mm-pact-broker) — Pact Broker for Contract tests
 - [mm-ui](https://github.com/MarketMasterPlus/mm-ui) — User Interface for Market Master
 
+## Live Demo
+You can see a 5-minute live demo of this project here:
+    [![Market Master Demo](https://www.loom.com/share/30d1121f90804e4ababea3a6590145c9?sid=a188dd24-435b-4d8c-8335-e029fa5da501)
+
 ## Market Master: Architecture Diagram
 This diagram illustrates the relationship between the front-end and the various backend services of the Market Master project.
 
@@ -56,10 +60,6 @@ curl http://localhost:5000/mm-address/viacep/22290080
     "complement": "de 201 a 233 - lado ímpar"
 }
 ```
-
-## Live Demo
-You can see a 5-minute live demo of this project here:
-    [![Market Master Demo](https://img.youtube.com/vi/1Q1Q1Q1Q1Q1Q/0.jpg)](https://www.youtube.com/watch?v=1Q1Q1Q1Q1Q1Q)
 
 ## Quick Start for the entire Market Master project
 
