@@ -42,9 +42,9 @@ In the mm-address service code, the ViaCEP integration is implemented with an en
 
 The endpoint will validate the postal code format and fetch the address details from the ViaCEP API. The response will include the street, city, state, neighborhood, and complement of the address.
 
-``sh
-curl http://localhost:5000/mm-address/viacep/01001000
-``
+```sh
+curl http://localhost:5000/mm-address/viacep/22290080
+```
 
 ```json
 {
