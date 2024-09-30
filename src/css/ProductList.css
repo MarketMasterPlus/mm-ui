@@ -1,19 +1,44 @@
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 20px;
+.product-list {
     padding: 20px;
 }
 
-.product-card {
-    border: 1px solid #ccc;
-    padding: 15px;
+.product-list h2 {
     text-align: center;
-    background-color: #fff;
+    margin-bottom: 20px;
 }
 
-.product-card .actions {
-    margin-top: 10px;
+.product-list .search-bar {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.product-list .search-bar input {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.product-list .product-grid {
     display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.product-list .product-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    width: 250px;
+    text-align: center;
+}
+
+.product-list .product-card img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+}
+
+.product-list .error {
+    color: red;
+    text-align: center;
 }

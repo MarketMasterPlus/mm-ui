@@ -7,6 +7,7 @@ import CustomerProfile from './components/CustomerProfile.jsx'; // Make sure thi
 import { AuthProvider } from './context/AuthContext.jsx';
 import MarketPanel from './components/MarketPanel.jsx'; // Make sure this import is correct
 import './App.css';
+import ProductPanel from './components/ProductPanel.jsx'; // Make sure this import is correct
 
 function App() {
     const [view, setView] = useState(null);
@@ -20,7 +21,8 @@ function App() {
                 {view === 'register' && <CustomerRegistration />}
                 {view === 'profile' && <CustomerProfile setView={setView} />}
                 {view === 'market' && <MarketPanel setView={setView} />} 
-
+                {view === 'product' && <ProductPanel setView={setView} />}
+                
                 {view === null && (
                     <div className="home-content">
                         <h2>Bem-vindo ao Market Master!</h2>

@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from 'react';
 import { fetchStores, deleteStore, fetchStoresByCity } from '../services/storeService.js';
 import StoreCard from './StoreCard.jsx';
-import StoreRegistration from './StoreRegistration.jsx'; // Ensure this is imported
+import StoreRegistration from './StoreRegistration.jsx';
+import ProductPanel from './ProductPanel.jsx'; // Ensure this is included for handling products
 import { useAuth } from '../context/AuthContext.jsx';
 import '../css/MyStores.css';
 
@@ -13,34 +14,26 @@ const MyStores = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [errors, setErrors] = useState(null);
     const [editingStoreId, setEditingStoreId] = useState(null);
+    const [selectedStoreId, setSelectedStoreId] = useState(null);
     const [filters, setFilters] = useState({ name: '', cnpj: '', city: '' });
+
+    useEffect(() => {
+        loadStores();
+    }, [filters, user.cpf]);
 
     const loadStores = async () => {
         setIsLoading(true);
         setErrors(null);
         try {
-            let fetchedStores = null;
-            if(filters.city) {
-                fetchedStores = await fetchStoresByCity({ ...filters, ownerid: user.cpf });
-            } 
-            else {
-                fetchedStores = await fetchStores({ ...filters, ownerid: user.cpf });
-            }
+            const fetchedStores = filters.city 
+                ? await fetchStoresByCity({ ...filters, ownerid: user.cpf })
+                : await fetchStores({ ...filters, ownerid: user.cpf });
             setStores(fetchedStores);
         } catch (error) {
             setErrors('Failed to load your stores: ' + error.message);
         } finally {
             setIsLoading(false);
         }
-    };
-
-    useEffect(() => {
-        loadStores();
-    }, [filters, user.cpf]);
-
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFilters(prev => ({ ...prev, [name]: value }));
     };
 
     const handleDelete = async (storeId) => {
@@ -64,44 +57,33 @@ const MyStores = () => {
         loadStores();
     };
 
+    const handleProducts = (storeId) => {
+        setSelectedStoreId(storeId);
+    };
+
     return (
         <div className="my-stores">
             <h2>Meus Mercados</h2>
             <div className="search-bar">
-                <input
-                    name="name"
-                    type="text"
-                    placeholder="Pesquisar por nome..."
-                    value={filters.name}
-                    onChange={handleChange}
-                />
-                <input
-                    name="cnpj"
-                    type="text"
-                    placeholder="Pesquisar por CNPJ..."
-                    value={filters.cnpj}
-                    onChange={handleChange}
-                />
-                <input
-                    name="city"
-                    type="text"
-                    placeholder="Pesquisar por cidade..."
-                    value={filters.city}
-                    onChange={handleChange}
-                />
+                <input name="name" type="text" placeholder="Pesquisar por nome..." value={filters.name} onChange={(e) => setFilters({ ...filters, name: e.target.value })} />
+                <input name="cnpj" type="text" placeholder="Pesquisar por CNPJ..." value={filters.cnpj} onChange={(e) => setFilters({ ...filters, cnpj: e.target.value })} />
+                <input name="city" type="text" placeholder="Pesquisar por cidade..." value={filters.city} onChange={(e) => setFilters({ ...filters, city: e.target.value })} />
             </div>
             {isLoading && <div>Carregando...</div>}
             {errors && <div className="error">{errors}</div>}
             {editingStoreId ? (
                 <StoreRegistration storeId={editingStoreId} onSuccess={handleEditSuccess} />
+            ) : selectedStoreId ? (
+                <ProductPanel storeId={selectedStoreId} />
             ) : (
                 <div className="store-grid">
-                    {stores.map((store) => (
+                    {stores.map(store => (
                         <StoreCard
                             key={store.id}
                             store={store}
                             onEdit={handleEdit}
                             onDelete={handleDelete}
+                            onProducts={handleProducts}
                         />
                     ))}
                 </div>

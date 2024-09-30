@@ -29,6 +29,7 @@ const Header = ({ setView }) => {
               <nav>
                 <button onClick={() => setView(null)}>Home</button>
                 <button onClick={() => setView("market")}>Mercado</button>
+                <button onClick={() => setView("product")}>Produtos</button>
                 <button onClick={() => setView("profile")}>Perfil</button>
                 <button onClick={handleLogout}>Sair</button>
               </nav>

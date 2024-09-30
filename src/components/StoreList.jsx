@@ -1,12 +1,13 @@
 // src/components/StoreList.jsx
 
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { useAuth } from '../context/AuthContext.jsx';
 import { fetchStores, fetchStoresByCity } from '../services/storeService.js';
 import StoreCard from './StoreCard.jsx';
 import '../css/StoreList.css';
 
-const StoreList = ({ user }) => {
+const StoreList = () => {
+    const { user } = useAuth();
     const [stores, setStores] = useState([]);
     const [filters, setFilters] = useState({
         name: '',
@@ -94,10 +95,6 @@ const StoreList = ({ user }) => {
             </div>
         </div>
     );
-};
-
-StoreList.propTypes = {
-    user: PropTypes.object.isRequired
 };
 
 export default StoreList;

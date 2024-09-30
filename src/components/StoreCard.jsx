@@ -13,16 +13,15 @@ const StoreCard = ({ store, onEdit, onDelete, onProducts }) => {
             {store.imageurl && (
                 <div className="store-image" style={{ backgroundImage: `url(${store.imageurl})` }}></div>
             )}
-            {(onEdit || onDelete) && (
-                <div className="store-actions">
-                    {onEdit && <button onClick={() => onEdit(store.id)}>Editar</button>}
-                    {onDelete && <button onClick={() => onDelete(store.id)}>Deletar</button>}
-                    <button onClick={() => onProducts(store.id)}>Produtos</button>
-                </div>
-            )}
+            <div className="store-actions">
+                {onEdit && <button onClick={() => onEdit(store.id)}>Editar</button>}
+                {onDelete && <button onClick={() => onDelete(store.id)}>Deletar</button>}
+                <button onClick={() => onProducts(store.id)}>Produtos</button>
+            </div>
         </div>
     );
 };
+
 StoreCard.propTypes = {
     store: PropTypes.shape({
         name: PropTypes.string.isRequired,

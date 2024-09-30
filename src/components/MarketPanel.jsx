@@ -1,22 +1,30 @@
 // src/components/MarketPanel.jsx
-
 import React, { useState } from 'react';
 import StoreRegistration from './StoreRegistration.jsx';
 import StoreList from './StoreList.jsx';
 import MyStores from './MyStores.jsx';
+import ProductPanel from './ProductPanel.jsx'; // Import ProductPanel component
 import '../css/MarketPanel.css';
 
-const MarketPanel = () => {
-    const [marketView, setMarketView] = useState('stores'); // 'stores', 'myStores', 'createStore'
+const MarketPanel = ({setView}) => {
+    const [marketView, setMarketView] = useState('stores'); // 'stores', 'myStores', 'createStore', 'productPanel'
+
+    const handleProductView = (storeId) => {
+        setView({ view: 'product', storeId: storeId }); // Pass storeId to productPanel
+    };
 
     const renderContent = () => {
-        switch (marketView) {
+        switch (marketView.view || marketView) { // Check if view is an object or string
             case 'stores':
-                return <StoreList />;
+                return <StoreList w/>;
             case 'myStores':
                 return <MyStores />;
             case 'createStore':
                 return <StoreRegistration onSuccess={() => setMarketView('myStores')} />;
+            case 'product':
+                setView(null);
+                setView('product');
+                return <ProductPanel storeId={marketView.storeId} />;
             default:
                 return <StoreList />;
         }
