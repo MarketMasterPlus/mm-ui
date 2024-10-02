@@ -136,7 +136,7 @@ const ProductList = ({ storeId }) => {
   );
 };
 ProductList.propTypes = {
-  storeId: PropTypes.number.isRequired,
+  storeId: PropTypes.number,
 };
 
 export default ProductList;

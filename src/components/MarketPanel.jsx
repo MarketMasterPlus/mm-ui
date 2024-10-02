@@ -1,5 +1,6 @@
 // src/components/MarketPanel.jsx
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import StoreRegistration from './StoreRegistration.jsx';
 import StoreList from './StoreList.jsx';
 import MyStores from './MyStores.jsx';
@@ -16,17 +17,16 @@ const MarketPanel = ({setView}) => {
     const renderContent = () => {
         switch (marketView.view || marketView) { // Check if view is an object or string
             case 'stores':
-                return <StoreList w/>;
+                return <StoreList setView={setView} />;
             case 'myStores':
-                return <MyStores />;
+                return <MyStores setView={setView} handleProductView={handleProductView} />;
             case 'createStore':
                 return <StoreRegistration onSuccess={() => setMarketView('myStores')} />;
             case 'product':
-                setView(null);
-                setView('product');
+                setView({view: 'product', storeId: marketView.storeId}); // Pass storeId to productPanel
                 return <ProductPanel storeId={marketView.storeId} />;
             default:
-                return <StoreList />;
+                return <StoreList setView={setView} />;
         }
     };
 
@@ -42,6 +42,9 @@ const MarketPanel = ({setView}) => {
             </main>
         </div>
     );
+};
+MarketPanel.propTypes = {
+    setView: PropTypes.func.isRequired,
 };
 
 export default MarketPanel;

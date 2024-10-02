@@ -83,7 +83,7 @@ const CustomerProfile = ({setView}) => {
             await updateCustomer(user.cpf, updatedCustomer);
             await updateAddress(address.id, address);
             alert('Perfil atualizado com sucesso!');
-            setView(null);
+            setView({view: 'home'});
         } catch (error) {
             alert('Erro ao atualizar perfil: ' + error.message);
         }

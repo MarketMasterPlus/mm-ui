@@ -10,20 +10,22 @@ import './App.css';
 import ProductPanel from './components/ProductPanel.jsx'; // Make sure this import is correct
 
 function App() {
-    const [view, setView] = useState(null);
+    const [view, setView] = useState({view: 'home'});
+
+    console.log("Current view state:", view); 
 
     return (
         <AuthProvider>
             <div className="App">
                 <Header setView={setView} />
 
-                {view === 'login' && <Login setView={setView} />}
-                {view === 'register' && <CustomerRegistration />}
-                {view === 'profile' && <CustomerProfile setView={setView} />}
-                {view === 'market' && <MarketPanel setView={setView} />} 
-                {view === 'product' && <ProductPanel setView={setView} />}
+                {view.view === 'login' && <Login setView={setView} />}
+                {view.view === 'register' && <CustomerRegistration />}
+                {view.view === 'profile' && <CustomerProfile setView={setView} />}
+                {view.view === 'market' && <MarketPanel setView={setView} />} 
+                {view.view === 'product' && <ProductPanel storeId={view.storeId}/>}
                 
-                {view === null && (
+                {view.view === 'home' && (
                     <div className="home-content">
                         <h2>Bem-vindo ao Market Master!</h2>
                         <p>Compre os melhores e mais baratos produtos no conforto da sua casa.</p>

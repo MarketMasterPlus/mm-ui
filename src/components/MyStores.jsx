@@ -8,7 +8,7 @@ import ProductPanel from './ProductPanel.jsx'; // Ensure this is included for ha
 import { useAuth } from '../context/AuthContext.jsx';
 import '../css/MyStores.css';
 
-const MyStores = () => {
+const MyStores = ({setView, handleProductView}) => {
     const { user } = useAuth();
     const [stores, setStores] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -58,7 +58,8 @@ const MyStores = () => {
     };
 
     const handleProducts = (storeId) => {
-        setSelectedStoreId(storeId);
+        console.log("handleProducts called with storeId:", storeId);
+        setView({view: 'product', storeId: storeId});
     };
 
     return (

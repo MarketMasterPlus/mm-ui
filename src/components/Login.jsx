@@ -29,7 +29,7 @@ const Login = ({setView}) => {
 
                 alert('Login realizado com sucesso!');
 
-                setView(null); // Redirect the user to the home view
+                setView({view: 'home' }); // Redirect the user to the home view
             } else {
                 throw new Error('Token not received');
             }

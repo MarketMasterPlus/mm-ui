@@ -6,7 +6,7 @@ import { fetchStores, fetchStoresByCity } from '../services/storeService.js';
 import StoreCard from './StoreCard.jsx';
 import '../css/StoreList.css';
 
-const StoreList = () => {
+const StoreList = ({setView}) => {
     const { user } = useAuth();
     const [stores, setStores] = useState([]);
     const [filters, setFilters] = useState({
@@ -39,11 +39,16 @@ const StoreList = () => {
 
     useEffect(() => {
         loadStores();
-    }, [filters]);
+    }, [filters, user.cpf]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFilters(prev => ({ ...prev, [name]: value }));
+    };
+
+    const handleProducts = (storeId) => {
+        console.log("Listing items in stock for storeId:", storeId);
+        setView({view: 'product', storeId: storeId});
     };
 
     return (
@@ -88,7 +93,7 @@ const StoreList = () => {
                         store={store}
                         onEdit={null}  // Edit and delete functions should be passed only if the user is the owner
                         onDelete={null}
-                        onProducts={() => console.log('Opening products for', store.name)}
+                        onProducts={handleProducts}
                         user={user}
                     />
                 ))}
