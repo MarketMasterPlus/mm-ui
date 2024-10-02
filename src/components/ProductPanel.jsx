@@ -36,7 +36,7 @@ const ProductPanel = ({ storeId }) => {
     );
 };
 ProductPanel.propTypes = {
-    storeId: PropTypes.number.isRequired,
+    storeId: PropTypes.number,
 };
 
 export default ProductPanel;
