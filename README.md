@@ -72,6 +72,18 @@ mkdir market-master
 cd market-master
 ```
 
+Clone all the Market Master services into the superdirectory:
+
+```sh
+git clone https://github.com/MarketMasterPlus/mm-address
+git clone https://github.com/MarketMasterPlus/mm-customer
+git clone https://github.com/MarketMasterPlus/mm-inventory
+git clone https://github.com/MarketMasterPlus/mm-product
+git clone https://github.com/MarketMasterPlus/mm-shopping-cart
+git clone https://github.com/MarketMasterPlus/mm-store
+git clone https://github.com/MarketMasterPlus/mm-ui
+```
+
 Create a bash script to start all services in detached mode:
 ```sh
 #!/bin/bash
